@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/restartGameMenuItem"
+        android:title="@string/restart_game"
+        android:icon="@drawable/ic_restart"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/exitGameMenuItem"
+        android:title="@string/exit"
+        android:icon="@drawable/ic_exit"
+        app:showAsAction="never"
+        />
+</menu>

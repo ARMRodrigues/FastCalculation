@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <include android:id="@+id/gameToolbar"
+        layout="@layout/toolbar_game"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/playerNameEdit"
+        style="@style/SettingsView"
+        android:autofillHints="name"
+        android:hint="@string/player_name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameToolbar"
+        />
+
+    <TextView
+        android:id="@+id/roundsTextView"
+        style="@style/SettingsView"
+        android:labelFor="@id/roundsTextView"
+        android:text="@string/rounds"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playerNameEdit" />
+
+    <Spinner
+        android:id="@+id/roundsSpinner"
+        style="@style/SettingsView"
+        android:entries="@array/rounds"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roundsTextView"
+        />
+
+    <TextView
+        android:id="@+id/roundIntervalTextView"
+        style="@style/SettingsView"
+        android:labelFor="@id/roundIntervalTextView"
+        android:text="@string/round_interval"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roundsSpinner" />
+
+    <RadioGroup
+        android:id="@+id/roundIntervalRadioGroup"
+        style="@style/SettingsView"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roundIntervalTextView" >
+
+        <RadioButton
+            android:id="@+id/intervalOneRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/one"/>
+        <RadioButton
+            android:id="@+id/intervalThreeRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/three"/>
+        <RadioButton
+            android:id="@+id/intervalFiveRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/five"/>
+    </RadioGroup>
+    
+    <Button
+        android:id="@+id/letsGoButton"
+        style="@style/SettingsView"
+        android:text="@string/lets_go"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roundIntervalRadioGroup"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
