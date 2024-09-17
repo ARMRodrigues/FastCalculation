@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.fastcalculation.databinding.FragmentGameBinding
 
 
-class GameFragment : Fragment() {
+class GameFragment : Fragment(), OnResults {
     private lateinit var fragmentGameBinding: FragmentGameBinding
 
     private lateinit var settings: Settings
@@ -97,15 +97,15 @@ class GameFragment : Fragment() {
             roundDeadlineHandler.sendEmptyMessageDelayed(MSG_ROUND_DEADLINE, settings.roundInterval)
         } else {
             with(fragmentGameBinding) {
-                roundsTextView.text = getString(R.string.points)
-                val points = hits * 10f / (totalGameTime / 1000L)
-                "%.1f".format(points).also {
-                    questionTextView.text = it
-                }
-                alternativeOneButton.visibility = View.GONE
-                alternativeTwoButton.visibility = View.GONE
-                alternativeThreeButton.visibility = View.GONE
+                onResults()
             }
         }
+    }
+
+    override fun onResults() {
+        val points = hits * 10f / (totalGameTime / 1000L)
+        getParentFragmentManager()
+            .beginTransaction()
+            .replace(R.id.gameFrameLayout, GameResultFragment.newInstance(settings, points)).commit()
     }
 }
